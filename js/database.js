@@ -86,8 +86,8 @@ var dbpat = {
             mes: 06,
             ano: 2019,
             titulo: 'Como se ter uma aposentadoria privada.',
-            texto: 'Tem varias empresas que ja oferecem isso só procurar',
-            img: "",
+            texto: 'Tem varias empresas que ja oferecem isso só procurar.<br> Ex: <a href="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwiAxe2-0fHiAhWUg5EKHUFkCugYABABGgJjZQ&ohost=www.google.com&cid=CAESEeD2iGIIIw-I6aU811W3QGBu&sig=AOD64_0kT6fgfzYp1cDUZHA6UjgLrjvjHA&q=&ved=2ahUKEwiPgOe-0fHiAhVYGbkGHYlIDjMQ0Qx6BAgWEAE&adurl=">Previdência Privada Vale a Pena?</a> Veja as Vantagens e Como Funciona',
+            img: "https://blog.rico.com.vc/hs-fs/hubfs/previdencia-privada-vantagens.jpg?width=1000&name=previdencia-privada-vantagens.jpg",
             curtidas: 5,
             comentarios: [
                 {
