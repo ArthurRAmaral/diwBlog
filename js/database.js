@@ -7,7 +7,7 @@ var dbpat = {
             ano: 2015,
             titulo: 'Cuide de sua pele',
             texto: 'Dicas para cuidar da sua pele do jeito que ela merece: <br> 1 - Hidrate; <br> 2 - Seque; <br> 3 - Tome banho;',
-            img: "http://lespeaux.com.br/blog/wp-content/uploads/2015/09/24-SET-LIMPEZA-DE-PELE.jpg",
+            img: "https://lespeaux.com.br/blog/wp-content/uploads/2015/09/24-SET-LIMPEZA-DE-PELE.jpg",
             curtidas: 1053,
             comentarios: [
                 {
