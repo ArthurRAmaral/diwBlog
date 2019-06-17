@@ -4,6 +4,15 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: #ff4949
+}
+
+a:hover {
+    color: #ff9090
+}
+
 header {
     width: 100%;
     height: 78px;
@@ -55,28 +64,6 @@ main {
     padding: 10px;
     min-width: 200px;
     margin: 30px auto 10px;
-}
-
-@media only screen and (min-width: 781px) {
-    .post-bloco {
-        position: relative;
-        min-width: 668px;
-        width: 668px;
-        max-width: 800px;
-        background-color: #1d1d1d;
-        padding: 10px;
-        border: #0d0d0d solid 4px;
-        color: #f1f1f1;
-    }
-    .form-publi {
-        position: relative;
-        width: 648px;
-        background-color: #1d1d1d;
-        padding: 20px;
-        border: #0d0d0d solid 4px;
-        color: #f1f1f1;
-        margin: 30px auto 10px;
-    }
 }
 
 .post-bloco>h1 {
@@ -177,6 +164,7 @@ main {
     padding: 10px;
     padding-left: 20px;
     font-size: 17px;
+    overflow: hidden;
 }
 
 .form-publi input {
@@ -201,17 +189,18 @@ main {
 }
 
 .msg {
+    position: fixed;
     left: calc(50% - 145px);
     top: 5px;
     background-color: #a32323f7;
     width: 250px;
-    position: absolute;
     text-align: center;
     padding: 30px 20px;
     font-size: 20px;
     font-weight: 700;
     border-radius: 10px;
-    border: #0d0d0df7 solid 3px
+    border: #0d0d0df7 solid 3px;
+    z-index: 10;
 }
 
 .post-bloco span.curtido {
@@ -222,4 +211,100 @@ main {
 .post-bloco span:hover {
     border: solid #5f1616 2px;
     background-color: rgb(32, 32, 32);
+}
+
+.form-comentario {
+    position: fixed;
+    top: calc(50% - 324px);
+    left: calc(50% - (calc(100% - 90px - 10px)/2 + 22px));
+    background-color: #1d1d1d;
+    border: #0d0d0d solid 4px;
+    color: #f1f1f1;
+    width: calc(100% - 90px - 10px);
+    padding: 20px;
+    min-width: 200px;
+    z-index: 2;
+}
+
+.bk {
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: #0000007e;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.form-comentario input[placeholder="Nome"] {
+    display: block;
+    width: 90%;
+    margin: 4px auto;
+    padding: 5px;
+}
+.form-comentario h1 {
+    display: block;
+    width: calc(90% + 14px);
+    margin: 0px auto 15px;;
+    font-size: 30px
+}
+
+.form-comentario textarea[placeholder="Comentário"] {
+    display: block;
+    width: 90%;
+    height: 70px;
+    margin: 5px auto;
+    padding: 5px;
+    border-width: 2px
+}
+
+.butscoment {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 4px auto
+}
+
+.form-comentario button.enviar-comentario {
+    width: calc(70% - 10px);
+    padding: 5px;
+}
+
+.form-comentario button.cancelar-comentario {
+    width: calc(30% - 10px);
+    padding: 5px;
+}
+
+@media only screen and (min-width: 781px) {
+    .post-bloco {
+        position: relative;
+        min-width: 668px;
+        width: 668px;
+        max-width: 800px;
+        background-color: #1d1d1d;
+        padding: 10px;
+        border: #0d0d0d solid 4px;
+        color: #f1f1f1;
+    }
+    .form-publi {
+        position: relative;
+        width: 648px;
+        background-color: #1d1d1d;
+        padding: 20px;
+        border: #0d0d0d solid 4px;
+        color: #f1f1f1;
+        margin: 30px auto 10px;
+    }
+    .form-comentario {
+        position: fixed;
+        top: calc(50% - 324px);
+        left: calc(50% - 335px - 24px);
+        background-color: #1d1d1d;
+        border: #0d0d0d solid 4px;
+        color: #f1f1f1;
+        width: 670px;
+        padding: 20px;
+        z-index: 2;
+    }
 }

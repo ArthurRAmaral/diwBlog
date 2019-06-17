@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/TBG logo.png">
     <title>The Blog</title>
-    <script src="js/database.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="js/database.js"></script>
 </head>
 
 <body onload="init()">
@@ -19,7 +19,7 @@
 
     <main>
         <div class="form-publi">
-                <div class="" id="msg"></div>
+            <div class="" id="msg"></div>
             <h2>Nova Publicação:</h2>
             <form action="" id="form">
                 <input type="text" placeholder="Título" id="formTitulo" required>
@@ -75,6 +75,8 @@
                 </div>
             </div>
         </div>
+        <div id="comentario-block">
+        </div>
     </main>
     <script>
 
@@ -94,57 +96,100 @@
 
             for (i = 0; i < dadosOrg.length; i++) {
                 let post = dadosOrg[i];
-                coments = '';
+                let icurtiu = db.curtiu.indexOf(post.id);
+                coments = '<div class="comentarios"><ul>';
                 for (j = 0; j < post.comentarios.length; j++) {
                     coments += `<li>
                                 <h1>${post.comentarios[j].nome}</h1>
                                 <p>${post.comentarios[j].texto}</p>
                             </li>`
                 }
+                coments += '</ul></div>';
                 if (post.img == '') {
-                    posts += `<div class="post-bloco">
-                <h1>${post.titulo}</h1>
-                <p>${post.texto}</p>
-                <div class="linha"></div>
-                <div class="qntcurtidas">Curtidas: ${post.curtidas}</div>
-                <div class="qntcomentarios">Comentários: ${post.comentarios.length}</div>
-                <div class="qntdata">${post.dia}/${post.mes}/${post.ano}</div>
-                <div class="linha"></div>
-                <div class="interacao">
-                    <div class="btncurtir">
-                        <span onclick="curtir(${post.id})" id="id-${post.id}">Curtir</span>
-                    </div>
-                    <div class="btncomentario">
-                        <span>Comentar</span>
-                    </div>
-                    <div class="comentarios">
-                        <ul>${coments}</ul>
-                    </div>
-                </div>
-            </div>`
+                    if (icurtiu >= 0) {
+                        posts += `<div class="post-bloco">
+                                    <h1>${post.titulo}</h1>
+                                    <p>${post.texto}</p>
+                                    <div class="linha"></div>
+                                    <div class="qntcurtidas">Curtidas: ${post.curtidas}</div>
+                                    <div class="qntcomentarios">Comentários: ${post.comentarios.length}</div>
+                                    <div class="qntdata">${post.dia}/${post.mes}/${post.ano}</div>
+                                    <div class="linha"></div>
+                                    <div class="interacao">
+                                    <div class="btncurtir">
+                                        <span onclick="curtir(${post.id})" id="id-${post.id}" class="curtido">Curtir</span>
+                                    </div>
+                                    <div class="btncomentario" >
+                                        <span onclick="comentar(${post.id})" id="comentar-id-${post.id}">Comentar</span>
+                                    </div>
+                                    ${coments}
+                                    </div>
+                                </div>`
+                    }
+                    else {
+                        posts += `<div class="post-bloco">
+                                    <h1>${post.titulo}</h1>
+                                    <p>${post.texto}</p>
+                                    <div class="linha"></div>
+                                    <div class="qntcurtidas">Curtidas: ${post.curtidas}</div>
+                                    <div class="qntcomentarios">Comentários: ${post.comentarios.length}</div>
+                                    <div class="qntdata">${post.dia}/${post.mes}/${post.ano}</div>
+                                    <div class="linha"></div>
+                                    <div class="interacao">
+                                    <div class="btncurtir">
+                                        <span onclick="curtir(${post.id})" id="id-${post.id}">Curtir</span>
+                                    </div>
+                                    <div class="btncomentario" >
+                                        <span onclick="comentar(${post.id})" id="comentar-id-${post.id}">Comentar</span>
+                                    </div>
+                                    ${coments}
+                                    </div>
+                                </div>`
+                    }
                 }
                 else {
-                    posts += `<div class="post-bloco">
-                <h1>${post.titulo}</h1>
-                <p>${post.texto}</p>
-                <img src="${post.img}" alt="">
-                <div class="linha"></div>
-                <div class="qntcurtidas">Curtidas: ${post.curtidas}</div>
-                <div class="qntcomentarios">Comentários: ${post.comentarios.length}</div>
-                <div class="qntdata">${post.dia}/${post.mes}/${post.ano}</div>
-                <div class="linha"></div>
-                <div class="interacao">
-                    <div class="btncurtir">
-                        <span onclick="curtir(${post.id})" id="id-${post.id}">Curtir</span>
-                    </div>
-                    <div class="btncomentario">
-                        <span>Comentar</span>
-                    </div>
-                    <div class="comentarios">
-                        <ul>${coments}</ul>
-                    </div>
-                </div>
-            </div>`
+                    if (icurtiu >= 0) {
+                        posts += `<div class="post-bloco">
+                                    <h1>${post.titulo}</h1>
+                                    <p>${post.texto}</p>
+                                    <img src="${post.img}" alt="">
+                                    <div class="linha"></div>
+                                    <div class="qntcurtidas">Curtidas: ${post.curtidas}</div>
+                                    <div class="qntcomentarios">Comentários: ${post.comentarios.length}</div>
+                                    <div class="qntdata">${post.dia}/${post.mes}/${post.ano}</div>
+                                    <div class="linha"></div>
+                                    <div class="interacao">
+                                    <div class="btncurtir">
+                                        <span onclick="curtir(${post.id})" id="curtir-id-${post.id}" class="curtido">Curtir</span>
+                                    </div>
+                                    <div class="btncomentario" >
+                                        <span onclick="comentar(${post.id})" id="comentar-id-${post.id}">Comentar</span>
+                                    </div>
+                                    ${coments}
+                                    </div>
+                                </div>`
+                    }
+                    else {
+                        posts += `<div class="post-bloco">
+                                    <h1>${post.titulo}</h1>
+                                    <p>${post.texto}</p>
+                                    <img src="${post.img}" alt="">
+                                    <div class="linha"></div>
+                                    <div class="qntcurtidas">Curtidas: ${post.curtidas}</div>
+                                    <div class="qntcomentarios">Comentários: ${post.comentarios.length}</div>
+                                    <div class="qntdata">${post.dia}/${post.mes}/${post.ano}</div>
+                                    <div class="linha"></div>
+                                    <div class="interacao">
+                                    <div class="btncurtir">
+                                        <span onclick="curtir(${post.id})" id="curtir-id-${post.id}">Curtir</span>
+                                    </div>
+                                    <div class="btncomentario" >
+                                        <span onclick="comentar(${post.id})">Comentar</span>
+                                    </div>
+                                    ${coments}
+                                    </div>
+                                </div>`
+                    }
                 }
             }
             document.getElementById('posts').innerHTML = posts;
@@ -159,10 +204,7 @@
 
             let novoTitulo = $("#formTitulo").val();
             let novoTexto = $("#formTexto").val();
-            let novaImagem = localStorage.getItem('dbArthurAmaralIMG');
-            if (!localStorage.getItem('dbArthurAmaralIMG')) {
-                novaImagem = '';
-            }
+            let novaImagem = db.imgAtual;
             let post = {
                 dia: new Date().getDate(),
                 mes: new Date().getMonth() + 1,
@@ -173,20 +215,18 @@
                 curtidas: 0,
                 comentarios: []
             };
-            console.log(post.dia)
+
             publicarPost(post);
-
             carregarPosts();
+            displayMessage("Publicado com sucesso");
 
-            img = '';
-            localStorage.setItem('dbArthurAmaralIMG', img);
-
-            $("#form")[0].reset();
+            db.imgAtual = '';
+            localStorage.setItem('dbArthurAmaral', JSON.stringify(db));
         };
 
         function imageHandler(e2) {
-            var img = e2.target.result;
-            localStorage.setItem('dbArthurAmaralIMG', img);
+            db.imgAtual = e2.target.result;
+            localStorage.setItem('dbArthurAmaral', JSON.stringify(db));
         }
 
         function loadimage(e1) {
@@ -211,6 +251,7 @@
                 }, 3000);
             });
         }
+    
     </script>
 </body>
 
