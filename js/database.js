@@ -26,7 +26,7 @@ var dbpat = {
             mes: 06,
             ano: 2019,
             titulo: 'Novo site de notícias',
-            texto: 'Está aberto para acesso site de notícia <a href="">TBG News</a>',
+            texto: 'Está aberto para acesso site de notícia <a href="https://tbgnews--arthuramaral.repl.co/">TBG News</a>',
             img: "img/TBGOFICIAL.png",
             curtidas: 21973,
             comentarios: [
