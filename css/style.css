@@ -43,7 +43,7 @@ main {
     padding: 10px;
     border: #0d0d0d solid 4px;
     color: #f1f1f1;
-    margin: 30px;
+    margin: 15px 30px;
 }
 
 .form-publi {
@@ -115,14 +115,14 @@ main {
     text-align: center;
     cursor: pointer;
     font-weight: 700;
-    color: #f1f1f1
+    color: #f1f1f1;
 }
 
 .post-bloco .interacao {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 10px 0 0 0
+    padding: 25px 10px 0
 }
 
 .btncomentario {
@@ -146,15 +146,14 @@ main {
     text-align: right;
 }
 
-.post-bloco .interacao span:hover {
+.post-bloco .interacao span.curtido:hover {
     border: solid #131313 2px;
     background-color: #333;
 }
 
 .comentarios {
-    padding: 10px;
-    width: 100%;
-    margin: 10px 10px 0
+    margin: 15px 0 0;
+    width: 95%;
 }
 
 .comentarios ul {
@@ -162,7 +161,7 @@ main {
 }
 
 .comentarios ul li {
-    margin: 5px;
+    margin: 10px 0;
     display: block;
     border: rgb(204, 0, 0) solid 2px;
     padding: 5px
@@ -218,4 +217,9 @@ main {
 .post-bloco span.curtido {
     border: solid #000000 2px;
     background-color: #222;
+}
+
+.post-bloco span:hover {
+    border: solid #5f1616 2px;
+    background-color: rgb(32, 32, 32);
 }

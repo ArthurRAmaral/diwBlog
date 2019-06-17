@@ -96,7 +96,8 @@ var dbpat = {
                 }
             ]
         },
-    ]
+    ],
+    curtiu: []
 }
 
 var db = JSON.parse(localStorage.getItem('dbArthurAmaral'));
@@ -131,18 +132,14 @@ function publicarPost(post) {
 function curtir(id) {
 
     let index = db.dados.map(obj => obj.id).indexOf(id);
-    let curtiu = JSON.parse(localStorage.getItem('curtiu'));
-    if (!curtiu) {
-        curtiu = { dados: [] }
-    }
-    let icurtiu = curtiu.dados.map(obj => obj).indexOf(id);
+    let curtiu = db.curtiu;
+    let icurtiu = curtiu.map(obj => obj).indexOf(id);
 
     if (icurtiu >= 0) {
         db.dados[index].curtidas -= 1;
         carregarPosts();
         $('#id-' + id).removeClass('curtido');
-        curtiu.dados.pop(id);
-        localStorage.setItem('curtiu', JSON.stringify(curtiu));
+        curtiu.pop(id);
         localStorage.setItem('dbArthurAmaral', JSON.stringify(db));
         return
     }
@@ -150,8 +147,7 @@ function curtir(id) {
         db.dados[index].curtidas += 1;
         carregarPosts();
         $('#id-' + id).addClass('curtido');
-        curtiu.dados.push(id);
-        localStorage.setItem('curtiu', JSON.stringify(curtiu));
+        curtiu.push(id);
         localStorage.setItem('dbArthurAmaral', JSON.stringify(db));
     }
 }
